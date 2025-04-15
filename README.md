@@ -1,4 +1,4 @@
-# PROJECTNAME
+# Pivoting with Relays
 Pivoting with Relays
 ## Objective
 
