@@ -29,14 +29,25 @@ This lab focused on demonstrating how to pivot through a compromised system usin
 - mknod, nc, ftp, and basic shell commands for relay setup and file transfers
 
 ## Steps
-Ref 1: Windows XP — Netcat Listener Setup
+Step 1: Redirect File into Netcat on Windows XP
+On the Windows XP virtual machine, I created a text file named super_secret_file.txt containing the phrase:
+“This is the secret formula! It must be protected at all costs!”
+Then, I redirected the contents of this file into a Netcat listener running on port 8080.
 
-Screenshot showing the name of the Windows XP VM and the command that redirects the contents of super_secret_file.txt into Netcat (port 8080).
+Ref 1: Windows XP → Netcat Listener
 
-Ref 2: MS2 — Netcat Forward Relay
+Screenshot shows the Windows XP VM name and the command used to redirect the contents of super_secret_file.txt into a Netcat listener on port 8080.
 
-Screenshot showing the name of the MS2 VM, the mknod pipe setup, the Netcat relay command (e.g., nc -nlvp 2222 < mypipe | nc <XP-IP> 8080) and an active connection forwarding the file to Kali.
+Step 2: Create Forward Relay on MS2
+On the MS2 virtual machine, I created a named pipe and used Netcat to establish a forward relay. This relay listened on port 2222 and forwarded incoming data to port 8080 on the Windows XP machine. This step allowed external systems (like Kali) to indirectly access the internal Windows XP system through MS2.
 
-Ref 3: Kali — Receiving the Secret Formula
+Ref 2: MS2 → Netcat Forward Relay
 
-Screenshot showing the command used on Kali to connect to the MS2 relay (nc <MS2-IP> 2222) and display of the secret contents from the Windows XP file.
+Screenshot shows the MS2 VM name, the named pipe creation, the Netcat relay command, and an active connection forwarding the secret file from Windows XP to Kali.
+
+Step 3: Connect from Kali and Retrieve the Secret
+On the Kali Linux virtual machine, I connected to the relay hosted on MS2. Once connected, the contents of the super_secret_file.txt were immediately displayed in the terminal, confirming that the relay and redirection setup worked as intended.
+
+Ref 3: Kali → Received Secret Formula
+
+Screenshot shows the command executed on Kali to connect to the MS2 relay and the successful display of the secret contents from the Windows XP file.
