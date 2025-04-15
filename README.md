@@ -1,5 +1,5 @@
 # Pivoting with Relays
-Pivoting with Relays
+
 ## Objective
 
 This lab focused on demonstrating how to pivot through a compromised system using Netcat relays. Simulating a real-world cyberattack, the task was to access a Windows XP machine hidden within a private network by relaying traffic through a compromised Metasploitable2 (MS2) VM from an external Kali Linux attack VM. This exercise helped reinforce the concepts of port forwarding, named pipes, and relay setups, commonly used in red teaming and post-exploitation activities.
