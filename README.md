@@ -37,6 +37,8 @@ Then, I redirected the contents of this file into a Netcat listener running on p
 Ref 1: Windows XP → Netcat Listener
 
 Screenshot shows the Windows XP VM name and the command used to redirect the contents of super_secret_file.txt into a Netcat listener on port 8080.
+![image](https://github.com/user-attachments/assets/d8cb2582-69e3-47b6-9efd-5b0d5b221163)
+
 
 Step 2: Create Forward Relay on MS2
 On the MS2 virtual machine, I created a named pipe and used Netcat to establish a forward relay. This relay listened on port 2222 and forwarded incoming data to port 8080 on the Windows XP machine. This step allowed external systems (like Kali) to indirectly access the internal Windows XP system through MS2.
@@ -44,6 +46,8 @@ On the MS2 virtual machine, I created a named pipe and used Netcat to establish 
 Ref 2: MS2 → Netcat Forward Relay
 
 Screenshot shows the MS2 VM name, the named pipe creation, the Netcat relay command, and an active connection forwarding the secret file from Windows XP to Kali.
+![image](https://github.com/user-attachments/assets/148aea2e-e1cb-46be-8451-1a0fad629d84)
+
 
 Step 3: Connect from Kali and Retrieve the Secret
 On the Kali Linux virtual machine, I connected to the relay hosted on MS2. Once connected, the contents of the super_secret_file.txt were immediately displayed in the terminal, confirming that the relay and redirection setup worked as intended.
@@ -51,3 +55,5 @@ On the Kali Linux virtual machine, I connected to the relay hosted on MS2. Once 
 Ref 3: Kali → Received Secret Formula
 
 Screenshot shows the command executed on Kali to connect to the MS2 relay and the successful display of the secret contents from the Windows XP file.
+![image](https://github.com/user-attachments/assets/7c7cbed2-48ae-4c4a-94e1-03f3c8de149d)
+
